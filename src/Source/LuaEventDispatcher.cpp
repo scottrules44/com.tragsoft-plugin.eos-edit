@@ -169,29 +169,6 @@ bool LuaEventDispatcher::RemoveEventListener(
 	return true;
 }
 
-bool LuaEventDispatcher::DispatchEventWithResult(lua_State* luaStatePointer, const char* eventName)
-{
-	// Validate arguments.
-	if (!fLuaStatePointer || !eventName)
-	{
-		return false;
-	}
-
-	// Push a new Lua event table to the top of the stack having the given event name.
-	CoronaLuaNewEvent(luaStatePointer, eventName);
-	int eventTableIndex = lua_gettop(luaStatePointer);
-
-	// Dispatch the above event table to Lua.
-	bool wasDispatched = DispatchEventWithResult(luaStatePointer, eventTableIndex);
-
-	// Remove the event table created above.
-	// Note: Do not call lua_pop() since the top most value on the stack provides the result (ie: Lua return value).
-	lua_remove(luaStatePointer, eventTableIndex);
-
-	// Returns true if given event was successfully dispatched to Lua.
-	return wasDispatched;
-}
-
 bool LuaEventDispatcher::DispatchEventWithResult(lua_State* luaStatePointer, int luaEventTableStackIndex)
 {
 	// Validate arguments.
@@ -230,21 +207,6 @@ bool LuaEventDispatcher::DispatchEventWithResult(lua_State* luaStatePointer, int
 	lua_pushvalue(luaStatePointer, luaEventTableStackIndex);
 	CoronaLuaDoCall(fLuaStatePointer, 2, 1);
 	return true;
-}
-
-bool LuaEventDispatcher::DispatchEventWithoutResult(lua_State* luaStatePointer, const char* eventName)
-{
-	// Dispatch the given event name to Lua with a returned result pushed to the top of the stack.
-	bool wasDispatched = DispatchEventWithResult(luaStatePointer, eventName);
-
-	// Pop off the result from the Lua stack.
-	if (wasDispatched)
-	{
-		lua_pop(luaStatePointer, 1);
-	}
-
-	// Returns true if given event was successfully dispatched to Lua.
-	return wasDispatched;
 }
 
 bool LuaEventDispatcher::DispatchEventWithoutResult(lua_State* luaStatePointer, int luaEventTableStackIndex)

@@ -1,0 +1,381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B7459272D5F69B700131A1E /* EOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7459262D5F69B700131A1E /* EOSSDK.framework */; platformFilter = ios; };
+		A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */ = {isa = PBXBuildFile; fileRef = A447B617165D734C009EA762 /* PluginLibrary.mm */; };
+		F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */; };
+		F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */; };
+		F5852E501D08589300BD1AE3 /* LuaEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */; };
+		F5852E511D08589300BD1AE3 /* LuaEventDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E411D08589300BD1AE3 /* LuaEventDispatcher.h */; };
+		F5852E521D08589300BD1AE3 /* LuaMethodCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E421D08589300BD1AE3 /* LuaMethodCallback.h */; };
+		F5852E531D08589300BD1AE3 /* PluginConfigLuaSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E431D08589300BD1AE3 /* PluginConfigLuaSettings.cpp */; };
+		F5852E541D08589300BD1AE3 /* PluginConfigLuaSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */; };
+		F5852E561D08589300BD1AE3 /* RuntimeContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */; };
+		F5852E571D08589300BD1AE3 /* RuntimeContext.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E471D08589300BD1AE3 /* RuntimeContext.h */; };
+		F5852E5B1D08589300BD1AE3 /* EosLuaInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A4E253B4166D6FB300DCDC2C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1B7459262D5F69B700131A1E /* EOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EOSSDK.framework; path = EmbeddedFrameworks/EOSSDK.framework; sourceTree = "<group>"; };
+		A447B616165D734C009EA762 /* PluginLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginLibrary.h; path = Plugin/PluginLibrary.h; sourceTree = "<group>"; };
+		A447B617165D734C009EA762 /* PluginLibrary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PluginLibrary.mm; path = Plugin/PluginLibrary.mm; sourceTree = "<group>"; };
+		A4E253B6166D6FB300DCDC2C /* libplugin_eos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplugin_eos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoronaNative.xcconfig; sourceTree = "<group>"; };
+		F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DispatchEventTask.cpp; path = ../Source/DispatchEventTask.cpp; sourceTree = "<group>"; };
+		F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DispatchEventTask.h; path = ../Source/DispatchEventTask.h; sourceTree = "<group>"; };
+		F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaEventDispatcher.cpp; path = ../Source/LuaEventDispatcher.cpp; sourceTree = "<group>"; };
+		F5852E411D08589300BD1AE3 /* LuaEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaEventDispatcher.h; path = ../Source/LuaEventDispatcher.h; sourceTree = "<group>"; };
+		F5852E421D08589300BD1AE3 /* LuaMethodCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaMethodCallback.h; path = ../Source/LuaMethodCallback.h; sourceTree = "<group>"; };
+		F5852E431D08589300BD1AE3 /* PluginConfigLuaSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PluginConfigLuaSettings.cpp; path = ../Source/PluginConfigLuaSettings.cpp; sourceTree = "<group>"; };
+		F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginConfigLuaSettings.h; path = ../Source/PluginConfigLuaSettings.h; sourceTree = "<group>"; };
+		F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RuntimeContext.cpp; path = ../Source/RuntimeContext.cpp; sourceTree = "<group>"; };
+		F5852E471D08589300BD1AE3 /* RuntimeContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RuntimeContext.h; path = ../Source/RuntimeContext.h; sourceTree = "<group>"; };
+		F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EosLuaInterface.cpp; path = ../Source/EosLuaInterface.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4E253B3166D6FB300DCDC2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B7459272D5F69B700131A1E /* EOSSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B7459252D5F69B700131A1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B7459262D5F69B700131A1E /* EOSSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		807BBF831B4C7D50003A223B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */,
+				F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */,
+				F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */,
+				F5852E411D08589300BD1AE3 /* LuaEventDispatcher.h */,
+				F5852E421D08589300BD1AE3 /* LuaMethodCallback.h */,
+				F5852E431D08589300BD1AE3 /* PluginConfigLuaSettings.cpp */,
+				F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */,
+				F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */,
+				F5852E471D08589300BD1AE3 /* RuntimeContext.h */,
+				F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */,
+			);
+			name = src;
+			path = ../Source;
+			sourceTree = "<group>";
+		};
+		A447B609165D72A6009EA762 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A447B616165D734C009EA762 /* PluginLibrary.h */,
+				A447B617165D734C009EA762 /* PluginLibrary.mm */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		A484110E15114F700074BD57 = {
+			isa = PBXGroup;
+			children = (
+				A447B609165D72A6009EA762 /* Source */,
+				F54A40C01EE083A300AF417D /* CoronaNative */,
+				A484111A15114F700074BD57 /* Products */,
+				807BBF831B4C7D50003A223B /* src */,
+				1B7459252D5F69B700131A1E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A484111A15114F700074BD57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4E253B6166D6FB300DCDC2C /* libplugin_eos.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F54A40C01EE083A300AF417D /* CoronaNative */ = {
+			isa = PBXGroup;
+			children = (
+				F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */,
+			);
+			name = CoronaNative;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		800621011B72CFEF00E34F9D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5852E521D08589300BD1AE3 /* LuaMethodCallback.h in Headers */,
+				F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */,
+				F5852E511D08589300BD1AE3 /* LuaEventDispatcher.h in Headers */,
+				F5852E541D08589300BD1AE3 /* PluginConfigLuaSettings.h in Headers */,
+				F5852E571D08589300BD1AE3 /* RuntimeContext.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A4E253B5166D6FB300DCDC2C /* plugin_eos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E253BF166D6FB300DCDC2C /* Build configuration list for PBXNativeTarget "plugin_eos" */;
+			buildPhases = (
+				C2E70B581EE9F110006E4570 /* Corona Native */,
+				A4E253B2166D6FB300DCDC2C /* Sources */,
+				A4E253B3166D6FB300DCDC2C /* Frameworks */,
+				800621011B72CFEF00E34F9D /* Headers */,
+				A4E253B4166D6FB300DCDC2C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = plugin_eos;
+			productName = plugin_eos;
+			productReference = A4E253B6166D6FB300DCDC2C /* libplugin_eos.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A484111015114F700074BD57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+			};
+			buildConfigurationList = A484111315114F700074BD57 /* Build configuration list for PBXProject "Plugin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = A484110E15114F700074BD57;
+			productRefGroup = A484111A15114F700074BD57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4E253B5166D6FB300DCDC2C /* plugin_eos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2E70B581EE9F110006E4570 /* Corona Native */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Corona Native";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# echo \"CORONA_ROOT: ${CORONA_ROOT}\"\nif [ ! -d \"${CORONA_ROOT}\" ]\nthen\n    echo \"error: Corona Native has not been setup.  Run 'Native/SetupCoronaNative.app' in your Corona install to set it up\" >&2\n\n    exit 1\nelse\n    echo \"Building with Corona Native from $(readlink \"${CORONA_ROOT}\")\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4E253B2166D6FB300DCDC2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */,
+				F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */,
+				F5852E561D08589300BD1AE3 /* RuntimeContext.cpp in Sources */,
+				F5852E501D08589300BD1AE3 /* LuaEventDispatcher.cpp in Sources */,
+				F5852E531D08589300BD1AE3 /* PluginConfigLuaSettings.cpp in Sources */,
+				F5852E5B1D08589300BD1AE3 /* EosLuaInterface.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A484114015114F700074BD57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A484114115114F700074BD57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4E253C0166D6FB300DCDC2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/plugin_eos.dst;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmbeddedFrameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = (
+					../Dependencies/Corona/shared/include/Corona,
+					../Dependencies/Corona/shared/include/lua,
+					../Dependencies/Epic/public/epic,
+				);
+			};
+			name = Debug;
+		};
+		A4E253C1166D6FB300DCDC2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/plugin_eos.dst;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmbeddedFrameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = (
+					../Dependencies/Corona/shared/include/Corona,
+					../Dependencies/Corona/shared/include/lua,
+					../Dependencies/Epic/public/epic,
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A484111315114F700074BD57 /* Build configuration list for PBXProject "Plugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A484114015114F700074BD57 /* Debug */,
+				A484114115114F700074BD57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E253BF166D6FB300DCDC2C /* Build configuration list for PBXNativeTarget "plugin_eos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E253C0166D6FB300DCDC2C /* Debug */,
+				A4E253C1166D6FB300DCDC2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A484111015114F700074BD57 /* Project object */;
+}

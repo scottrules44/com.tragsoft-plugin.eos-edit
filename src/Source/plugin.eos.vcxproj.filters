@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="LuaEventDispatcher.cpp" />
     <ClCompile Include="RuntimeContext.cpp" />
-    <ClCompile Include="BaseEosCallResultHandler.cpp" />
     <ClCompile Include="EosLuaInterface.cpp" />
     <ClCompile Include="DispatchEventTask.cpp" />
     <ClCompile Include="PluginConfigLuaSettings.cpp" />
@@ -14,8 +13,6 @@
     <ClInclude Include="LuaEventDispatcher.h" />
     <ClInclude Include="RuntimeContext.h" />
     <ClInclude Include="LuaMethodCallback.h" />
-    <ClInclude Include="EosCallResultHandler.h" />
-    <ClInclude Include="BaseEosCallResultHandler.h" />
     <ClInclude Include="DispatchEventTask.h" />
     <ClInclude Include="PluginConfigLuaSettings.h" />
     <ClInclude Include="PlatformCommandLine.h" />

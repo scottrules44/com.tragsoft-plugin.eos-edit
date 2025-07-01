@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------------
 // 
-// BaseEosCallResultHandler.cpp
+// PlatformCommandLine.cpp
 // Copyright (c) 2016 Corona Labs Inc. All rights reserved.
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
@@ -37,3 +37,7 @@ const std::map<std::string, std::string>::const_iterator& CMDLine::End() {
 	return ret;
 }
 
+const std::vector<std::string> & CMDLine::Get() {
+    static std::vector<std::string> emptyList;
+    return emptyList;
+}

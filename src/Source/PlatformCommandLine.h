@@ -15,7 +15,7 @@
 class CMDLine
 {
 	public:
-		static const std::vector<std::string>& Get();
+		static const std::vector<std::string> & Get();
 		static const std::map<std::string, std::string>& Map();
 		static const std::map<std::string, std::string>::const_iterator& End();
 };

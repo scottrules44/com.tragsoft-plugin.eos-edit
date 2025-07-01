@@ -1,0 +1,170 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 30
+    defaultConfig {
+        namespace "plugin.eos" // This is the package name of the plugin
+
+        minSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++17 -malign-double"
+                arguments "-DANDROID_STL=c++_shared"
+            }
+        }
+		splits {
+			abi {
+				enable true
+				reset()
+				include 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+				universalApk false
+			}
+		}
+
+		String lowerCaseClientId = ClientId.toLowerCase().substring(1, ClientId.length()-1)
+        resValue("string", "eos_login_protocol_scheme", "eos." + lowerCaseClientId)
+    }
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+    buildTypes {
+        buildTypes.each {
+            it.buildConfigField 'String', 'ProductId', ProductId
+            it.buildConfigField 'String', 'SandboxId', SandboxId
+            it.buildConfigField 'String', 'DeploymentId', DeploymentId
+            it.buildConfigField 'String', 'ClientId', ClientId
+            it.buildConfigField 'String', 'ClientSecret', ClientSecret
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+	sourceSets {
+		main {
+			jniLibs.srcDirs = ["jniLibs"]
+		}
+	}
+}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    implementation ':Corona@aar'
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.security:security-crypto:1.0.0'
+    implementation 'androidx.browser:browser:1.0.0'
+
+    implementation(name: "eos-sdk", ext: "aar")
+}
+
+def buildDirectory = getLayout().getBuildDirectory().asFile.get()
+tasks.register('unzipEosAar', Copy) {
+    from zipTree(file('libs/eos-sdk.aar'))
+    into file("$buildDirectory/unpacked/eos-sdk")
+}
+
+tasks.register("unzipCoronaAar", Copy) {
+    dependsOn { 'unzipEosAar' }
+    from zipTree(file('libs/Corona.aar'))
+    into file("$buildDirectory/unpacked/Corona")
+}
+
+tasks.register("copyNativeLibs", Copy) {
+    dependsOn { 'unzipCoronaAar' }
+
+    def extractedCoronaLibs = file("$buildDirectory/unpacked/Corona/jni")
+    from("$extractedCoronaLibs/armeabi-v7a/") {
+        include "*.so"
+        into "$projectDir/src/main/jniLibs/armeabi-v7a"
+    }
+    from("$extractedCoronaLibs/arm64-v8a/") {
+        include "*.so"
+        into "$projectDir/src/main/jniLibs/arm64-v8a"
+    }
+    
+    def extractedEosLibs = file("$buildDirectory/unpacked/eos-sdk/jni")
+    from("$extractedEosLibs/armeabi-v7a/") {
+        include "*.so"
+        into "$projectDir/src/main/jniLibs/armeabi-v7a"
+    }
+    from("$extractedEosLibs/arm64-v8a/") {
+        include "*.so"
+        into "$projectDir/src/main/jniLibs/arm64-v8a"
+    }
+}
+
+tasks.named("preBuild") {
+    dependsOn { 'unzipCoronaAar' }
+}
+
+tasks.register("extractPluginJar") {
+    group "Solar2Dev"
+    dependsOn assembleRelease
+    doLast {
+        copy {
+            from {
+                zipTree("$buildDirectory/outputs/aar/${project.name}-release.aar").matching {
+                    include 'classes.jar'
+                }.singleFile
+            }
+            into "$buildDirectory/outputs/"
+            String packageName = android.namespace
+            rename "classes.jar", "${packageName}.jar"
+        }
+    }
+}
+
+// This creates archive for plugin so it can be used by Simulator from build.settings
+// by deploying it directly to Solar2DPlugins directory. This is first in line location
+// to retrieve plugins, so will overshadow online directory/store downloads.
+def providerId = 'com.solar2d'
+tasks.register("deployToLocalSolar2DRepo", Tar) {
+    group "Solar2Dev"
+
+    dependsOn assembleRelease
+
+    File pluginManifestFile = file("src/main/AndroidManifest.xml")
+    String manifestContents = pluginManifestFile.text
+    def pluginManifestXml = new XmlSlurper().parseText(manifestContents)
+    String packageName = android.namespace
+
+    compression = Compression.GZIP
+    archiveFileName = "data.tgz"
+    def rootS2DP
+    if (System.env.APP_DATA) {
+        rootS2DP = System.env.APP_DATA
+    } else {
+        rootS2DP = System.env.HOME
+    }
+    def dst = file("$rootS2DP/Solar2DPlugins/$providerId/$packageName/android")
+    destinationDirectory = dst
+
+    into("/") {
+        from("$buildDirectory/outputs/aar")
+        include("${project.name}-release.aar")
+    }
+    doLast {
+        println("\n\n\n== !!! IMPORTANT !!! ==\nMake sure to delete plugin when done: $dst\nThis plugin will override any Solar2Directory plugin, or plugin from any other source")
+    }
+}

@@ -1,3 +1,4 @@
 plugins/*.tgz
 src/Source/.vs
 .vscode/
+.DS_Store
