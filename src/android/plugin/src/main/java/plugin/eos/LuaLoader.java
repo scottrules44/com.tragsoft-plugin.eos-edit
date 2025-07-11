@@ -389,7 +389,7 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
         PassLuaLoaderInstance();
 
         /** Pass Application context to EOS SDK Java side */
-        EOSSDK.init(getApplicationContext());
+        EOSSDK.init(CoronaEnvironment.getCoronaActivity());
 
         /** Initialize SDK and start tick */
         boolean result = nativeInitializeSDK(L, getApplicationContext().getFilesDir().getAbsolutePath() + "/");

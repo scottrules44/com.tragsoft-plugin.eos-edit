@@ -23,7 +23,7 @@ allprojects {
             "${System.getenv("HOME")}/Library/Application Support/Corona/Native/"
         }
         flatDir {
-            dirs("$nativeDir/Corona/android/lib/gradle", "$nativeDir/Corona/android/lib/Corona/libs", "libs")
+            dirs("$nativeDir/Corona/android/lib/gradle", "$nativeDir/Corona/android/lib/Corona/libs")
         }
     }
 }

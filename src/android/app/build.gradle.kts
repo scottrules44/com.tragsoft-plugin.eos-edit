@@ -195,10 +195,10 @@ android {
     lintOptions {
         isCheckReleaseBuilds = true
     }
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = coronaAppPackage
-        targetSdk = 34
+        targetSdk = 35
         minSdk = (extra["minSdkVersion"] as Int)
         versionCode = coronaVersionCode
         versionName = coronaVersionName
@@ -1116,7 +1116,11 @@ tasks.register<Zip>("createExpansionFile") {
 }
 
 //</editor-fold>
-
+repositories {
+    flatDir {
+        dirs("libs")
+    }
+}
 dependencies {
     if (coronaBuiltFromSource) {
         implementation(project(":Corona"))
