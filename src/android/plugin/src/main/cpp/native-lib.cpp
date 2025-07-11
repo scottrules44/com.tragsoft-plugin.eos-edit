@@ -20,6 +20,7 @@ jobject GlobalRefLuaLoaderInstance = nullptr;
 static EOS_EpicAccountId LocalUserId = nullptr;
 static EOS_UserInfo *LocalUserInfo = nullptr;
 static EOS_NotificationId NotifyLoginStatusChangedId = EOS_INVALID_NOTIFICATIONID;
+static jobject GlobalRefActivity = nullptr;
 
 void DeletePersistentAuth();
 

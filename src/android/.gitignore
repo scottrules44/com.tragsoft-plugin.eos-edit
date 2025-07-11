@@ -5,5 +5,3 @@
 **/build/**
 preloadedAssets/build/
 preloadedAssets/src/
-.gradle/**/*
-.cxx

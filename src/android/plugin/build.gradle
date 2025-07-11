@@ -1,37 +1,35 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdk 30
+    compileSdk 35
     defaultConfig {
         namespace "plugin.eos" // This is the package name of the plugin
 
         minSdkVersion 23
         versionCode 1
         versionName "1.0"
-
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++17 -malign-double"
                 arguments "-DANDROID_STL=c++_shared"
             }
         }
-		splits {
-			abi {
-				enable true
-				reset()
-				include 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
-				universalApk false
-			}
-		}
+        splits {
+            abi {
+                enable true
+                reset()
+                include 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+                universalApk false
+            }
+        }
 
-		String lowerCaseClientId = ClientId.toLowerCase().substring(1, ClientId.length()-1)
+        String lowerCaseClientId = ClientId.toLowerCase().substring(1, ClientId.length()-1)
         resValue("string", "eos_login_protocol_scheme", "eos." + lowerCaseClientId)
     }
     compileOptions {
-		sourceCompatibility JavaVersion.VERSION_17
-		targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
-
     buildFeatures {
         buildConfig true
     }
@@ -56,12 +54,13 @@ android {
             path "src/main/cpp/CMakeLists.txt"
         }
     }
-	sourceSets {
-		main {
-			jniLibs.srcDirs = ["jniLibs"]
-		}
-	}
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["jniLibs"]
+        }
+    }
 }
+
 repositories {
     flatDir {
         dirs 'libs'
@@ -79,45 +78,6 @@ dependencies {
 }
 
 def buildDirectory = getLayout().getBuildDirectory().asFile.get()
-tasks.register('unzipEosAar', Copy) {
-    from zipTree(file('libs/eos-sdk.aar'))
-    into file("$buildDirectory/unpacked/eos-sdk")
-}
-
-tasks.register("unzipCoronaAar", Copy) {
-    dependsOn { 'unzipEosAar' }
-    from zipTree(file('libs/Corona.aar'))
-    into file("$buildDirectory/unpacked/Corona")
-}
-
-tasks.register("copyNativeLibs", Copy) {
-    dependsOn { 'unzipCoronaAar' }
-
-    def extractedCoronaLibs = file("$buildDirectory/unpacked/Corona/jni")
-    from("$extractedCoronaLibs/armeabi-v7a/") {
-        include "*.so"
-        into "$projectDir/src/main/jniLibs/armeabi-v7a"
-    }
-    from("$extractedCoronaLibs/arm64-v8a/") {
-        include "*.so"
-        into "$projectDir/src/main/jniLibs/arm64-v8a"
-    }
-    
-    def extractedEosLibs = file("$buildDirectory/unpacked/eos-sdk/jni")
-    from("$extractedEosLibs/armeabi-v7a/") {
-        include "*.so"
-        into "$projectDir/src/main/jniLibs/armeabi-v7a"
-    }
-    from("$extractedEosLibs/arm64-v8a/") {
-        include "*.so"
-        into "$projectDir/src/main/jniLibs/arm64-v8a"
-    }
-}
-
-tasks.named("preBuild") {
-    dependsOn { 'unzipCoronaAar' }
-}
-
 tasks.register("extractPluginJar") {
     group "Solar2Dev"
     dependsOn assembleRelease
@@ -133,6 +93,18 @@ tasks.register("extractPluginJar") {
             rename "classes.jar", "${packageName}.jar"
         }
     }
+}
+
+
+tasks.register('unzipEosAar', Copy) {
+    from zipTree(file('libs/eos-sdk.aar'))
+    into file("$buildDirectory/unpacked/eos-sdk")
+}
+
+tasks.register("unzipCoronaAar", Copy) {
+    dependsOn { 'unzipEosAar' }
+    from zipTree(file('libs/Corona.aar'))
+    into file("$buildDirectory/unpacked/Corona")
 }
 
 // This creates archive for plugin so it can be used by Simulator from build.settings
