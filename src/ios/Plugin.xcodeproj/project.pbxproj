@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B7459272D5F69B700131A1E /* EOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7459262D5F69B700131A1E /* EOSSDK.framework */; platformFilter = ios; };
-		A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */ = {isa = PBXBuildFile; fileRef = A447B617165D734C009EA762 /* PluginLibrary.mm */; };
+		DB74E4D52E298DC000BCD993 /* WebAuthContextProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB74E4D42E298DC000BCD993 /* WebAuthContextProvider.mm */; };
+		DB74E4D62E298DC000BCD993 /* WebAuthContextProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = DB74E4D32E298DC000BCD993 /* WebAuthContextProvider.h */; };
 		F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */; };
 		F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */; };
 		F5852E501D08589300BD1AE3 /* LuaEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */; };
@@ -35,9 +36,9 @@
 
 /* Begin PBXFileReference section */
 		1B7459262D5F69B700131A1E /* EOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EOSSDK.framework; path = EmbeddedFrameworks/EOSSDK.framework; sourceTree = "<group>"; };
-		A447B616165D734C009EA762 /* PluginLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginLibrary.h; path = Plugin/PluginLibrary.h; sourceTree = "<group>"; };
-		A447B617165D734C009EA762 /* PluginLibrary.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PluginLibrary.mm; path = Plugin/PluginLibrary.mm; sourceTree = "<group>"; };
 		A4E253B6166D6FB300DCDC2C /* libplugin_eos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libplugin_eos.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB74E4D32E298DC000BCD993 /* WebAuthContextProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebAuthContextProvider.h; path = Plugin/WebAuthContextProvider.h; sourceTree = "<group>"; };
+		DB74E4D42E298DC000BCD993 /* WebAuthContextProvider.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = WebAuthContextProvider.mm; path = Plugin/WebAuthContextProvider.mm; sourceTree = "<group>"; };
 		F572F81A1EE0705B001BC814 /* CoronaNative.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoronaNative.xcconfig; sourceTree = "<group>"; };
 		F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DispatchEventTask.cpp; path = ../Source/DispatchEventTask.cpp; sourceTree = "<group>"; };
 		F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DispatchEventTask.h; path = ../Source/DispatchEventTask.h; sourceTree = "<group>"; };
@@ -92,8 +93,8 @@
 		A447B609165D72A6009EA762 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A447B616165D734C009EA762 /* PluginLibrary.h */,
-				A447B617165D734C009EA762 /* PluginLibrary.mm */,
+				DB74E4D32E298DC000BCD993 /* WebAuthContextProvider.h */,
+				DB74E4D42E298DC000BCD993 /* WebAuthContextProvider.mm */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -136,6 +137,7 @@
 				F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */,
 				F5852E511D08589300BD1AE3 /* LuaEventDispatcher.h in Headers */,
 				F5852E541D08589300BD1AE3 /* PluginConfigLuaSettings.h in Headers */,
+				DB74E4D62E298DC000BCD993 /* WebAuthContextProvider.h in Headers */,
 				F5852E571D08589300BD1AE3 /* RuntimeContext.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,8 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E253C9166D716900DCDC2C /* PluginLibrary.mm in Sources */,
 				F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */,
+				DB74E4D52E298DC000BCD993 /* WebAuthContextProvider.mm in Sources */,
 				F5852E561D08589300BD1AE3 /* RuntimeContext.cpp in Sources */,
 				F5852E501D08589300BD1AE3 /* LuaEventDispatcher.cpp in Sources */,
 				F5852E531D08589300BD1AE3 /* PluginConfigLuaSettings.cpp in Sources */,

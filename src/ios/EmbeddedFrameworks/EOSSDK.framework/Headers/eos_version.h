@@ -6,8 +6,8 @@
 // These numbers define the banner SDK version, and are the most significant numbers when ordering two engine versions (that is, a 4.12.* version is always
 // newer than a 4.11.* version, regardless of the changelist that it was built with)
 #define EOS_MAJOR_VERSION	1
-#define EOS_MINOR_VERSION	16
-#define EOS_PATCH_VERSION	1
+#define EOS_MINOR_VERSION	17
+#define EOS_PATCH_VERSION	0
  
 // Macros for encoding strings
 #define EOS_VERSION_STRINGIFY_2(x) #x
@@ -19,9 +19,9 @@
 #define EOS_PRODUCT_NAME "Epic Online Services SDK"
 #define EOS_PRODUCT_IDENTIFIER "Epic Online Services SDK"
 
-#define EOS_VERSION_STRING_BASE                  \
-	EOS_VERSION_STRINGIFY(EOS_MAJOR_VERSION) "." \
-	EOS_VERSION_STRINGIFY(EOS_MINOR_VERSION) "." \
+#define EOS_VERSION_STRING_BASE                  		\
+	EOS_VERSION_STRINGIFY(EOS_MAJOR_VERSION) "." 		\
+	EOS_VERSION_STRINGIFY(EOS_MINOR_VERSION) "." 		\
 	EOS_VERSION_STRINGIFY(EOS_PATCH_VERSION)
 
 #if defined(BUILT_FROM_CHANGELIST)
@@ -46,7 +46,15 @@
 
 #include "eos_base.h"
 
-/** Get the version of the EOSSDK binary */
+/**
+ * Get the version of the compiled EOSSDK binary
+ * MAJOR.MINOR.PATCH-CHANGELIST#-PLATFORMSDKVERSION
+ * 
+ * It is the version available at runtime
+ * It should match the version of the headers being used
+ * 
+ * @return the version of the compiled EOSSDK binary
+ */
 EOS_DECLARE_FUNC(const char*) EOS_GetVersion(void);
 
 #endif /* #ifndef RC_INVOKED */

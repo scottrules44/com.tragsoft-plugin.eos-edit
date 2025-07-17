@@ -52,6 +52,17 @@ extern "C"
   extern "C" void* CreateWebAuthContextProvider();
 #endif
 
+#if defined(__ANDROID__)
+    #include "Android/eos_android.h"
+    #include "Android/eos_Android_base.h"
+    typedef struct EOS_Android_Auth_CredentialsOptions {
+        int32_t ApiVersion;
+        void* Activity; // Should be a jobject from JNI
+    } EOS_Android_Auth_CredentialsOptions;
+
+    #define EOS_ANDROID_AUTH_CREDENTIALSOPTIONS_API_LATEST 1
+#endif
+
 //---------------------------------------------------------------------------------
 // Constants
 //---------------------------------------------------------------------------------
@@ -183,6 +194,10 @@ extern "C" int InitializeSDK(lua_State *luaStatePointer, EOS_InitializeOptions S
     // Fetch the EOS properties from the "config.lua" file.
     PluginConfigLuaSettings configLuaSettings;
     configLuaSettings.LoadFrom(luaStatePointer);
+    
+    //Load SDKOptions from config.lua
+    SDKOptions.ProductName = configLuaSettings.GetStringProductName();
+    SDKOptions.ProductVersion = configLuaSettings.GetStringProductVersion();
 
     // Initialize our connection with EOS if this is the first plugin instance.
     // Note: This avoid initializing twice in case multiple plugin instances exist at the same time.
@@ -350,7 +365,6 @@ extern "C" int OnLoginWithAccountPortal(lua_State *luaStatePointer) {
     CredentialsOptions.PresentationContextProviding = (void*)CreateWebAuthContextProvider(); // SDK will release when consumed
     Credentials.SystemAuthCredentialsOptions = (void*)&CredentialsOptions;
  #endif
-
     EOS_Auth_LoginOptions LoginOptions = {};
     LoginOptions.ApiVersion = EOS_AUTH_LOGIN_API_LATEST;
     LoginOptions.ScopeFlags = EOS_EAuthScopeFlags::EOS_AS_BasicProfile;
@@ -834,11 +848,12 @@ CORONA_EXPORT int luaopen_plugin_eos(lua_State *luaStatePointer) {
     SDKOptions.AllocateMemoryFunction = nullptr;
     SDKOptions.ReallocateMemoryFunction = nullptr;
     SDKOptions.ReleaseMemoryFunction = nullptr;
-    SDKOptions.ProductName = "Coromon"; // JOCHEM - TODO
-    SDKOptions.ProductVersion = "1.3.6"; // JOCHEM - TODO
+    SDKOptions.ProductName = nullptr;
+    SDKOptions.ProductVersion = nullptr;
     SDKOptions.Reserved = nullptr;
     SDKOptions.SystemInitializeOptions = nullptr;
     SDKOptions.OverrideThreadAffinity = nullptr;
+    
     InitializeSDK(luaStatePointer, SDKOptions);
 
     // Push this plugin's Lua table and all of its functions to the top of the Lua stack.
