@@ -55,6 +55,7 @@ void PluginConfigLuaSettings::SetStringAppId(const char* stringId)
 	}
 }
 
+
 const char* PluginConfigLuaSettings::GetStringProductId() const
 {
 	return fStringProductId.c_str();
@@ -140,11 +141,48 @@ void PluginConfigLuaSettings::SetStringClientSecret(const char* stringId)
 	}
 }
 
+
+const char* PluginConfigLuaSettings::GetStringProductName() const
+{
+    return fStringClientSecret.c_str();
+}
+
+void PluginConfigLuaSettings::SetStringProductName(const char* stringId)
+{
+    if (stringId)
+    {
+        fStringProductName = stringId;
+    }
+    else
+    {
+        fStringProductName.clear();
+    }
+}
+
+const char* PluginConfigLuaSettings::GetStringProductVersion() const
+{
+    return fStringProductVersion.c_str();
+}
+
+void PluginConfigLuaSettings::SetStringProductVersion(const char* stringId)
+{
+    if (stringId)
+    {
+        fStringProductVersion = stringId;
+    }
+    else
+    {
+        fStringProductVersion.clear();
+    }
+}
+
 void PluginConfigLuaSettings::Reset()
 {
 	fStringAppId.clear();
 	fStringClientId.clear();
 	fStringClientSecret.clear();
+    fStringProductName.clear();
+    fStringProductVersion.clear();
 }
 
 bool PluginConfigLuaSettings::LoadFrom(lua_State* luaStatePointer)
@@ -298,6 +336,33 @@ bool PluginConfigLuaSettings::LoadFrom(lua_State* luaStatePointer)
 				}
 				lua_pop(luaStatePointer, 1);
 
+                
+                // Fetch the Product Name in string form.
+                lua_getfield(luaStatePointer, -1, "productName");
+                const auto productNameLuaValueType = lua_type(luaStatePointer, -1);
+                if (productNameLuaValueType == LUA_TSTRING)
+                {
+                    auto stringValue = lua_tostring(luaStatePointer, -1);
+                    if (stringValue)
+                    {
+                        fStringProductName = stringValue;
+                    }
+                }
+                lua_pop(luaStatePointer, 1);
+                
+                // Fetch the Product Version in string form.
+                lua_getfield(luaStatePointer, -1, "productVersion");
+                const auto productVersionLuaValueType = lua_type(luaStatePointer, -1);
+                if (productVersionLuaValueType == LUA_TSTRING)
+                {
+                    auto stringValue = lua_tostring(luaStatePointer, -1);
+                    if (stringValue)
+                    {
+                        fStringProductVersion = stringValue;
+                    }
+                }
+                lua_pop(luaStatePointer, 1);
+                
 				// *** In the future, other "config.lua" plugin settings can be loaded here. ***
 			}
 			lua_pop(luaStatePointer, 1);

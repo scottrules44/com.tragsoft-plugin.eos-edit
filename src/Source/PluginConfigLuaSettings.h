@@ -42,6 +42,11 @@ class PluginConfigLuaSettings
 		void SetStringClientId(const char* stringId);
 		const char* GetStringClientSecret() const;
 		void SetStringClientSecret(const char* stringId);
+        const char* GetStringProductName() const;
+        void SetStringProductName(const char* stringId);
+        const char* GetStringProductVersion() const;
+        void SetStringProductVersion(const char* stringId);
+        
 		void Reset();
 		bool LoadFrom(lua_State* luaStatePointer);
 
@@ -53,4 +58,6 @@ class PluginConfigLuaSettings
 		std::string fStringDeploymentId;
 		std::string fStringClientId;
 		std::string fStringClientSecret;
+        std::string fStringProductName;
+        std::string fStringProductVersion;
 };
