@@ -10,8 +10,6 @@
 		F54A690527EE233700ACF0E5 /* PlatformCommandLine-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = F54A690327EE233700ACF0E5 /* PlatformCommandLine-mac.mm */; };
 		F54A690627EE233700ACF0E5 /* PlatformCommandLine.h in Headers */ = {isa = PBXBuildFile; fileRef = F54A690427EE233700ACF0E5 /* PlatformCommandLine.h */; };
 		F54A690827EE263D00ACF0E5 /* PlatformCommandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F54A690727EE263D00ACF0E5 /* PlatformCommandLine.cpp */; };
-		F5852E4C1D08589300BD1AE3 /* BaseEosCallResultHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E3C1D08589300BD1AE3 /* BaseEosCallResultHandler.cpp */; };
-		F5852E4D1D08589300BD1AE3 /* BaseEosCallResultHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E3D1D08589300BD1AE3 /* BaseEosCallResultHandler.h */; };
 		F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */; };
 		F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */; };
 		F5852E501D08589300BD1AE3 /* LuaEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */; };
@@ -21,7 +19,6 @@
 		F5852E541D08589300BD1AE3 /* PluginConfigLuaSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */; };
 		F5852E561D08589300BD1AE3 /* RuntimeContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */; };
 		F5852E571D08589300BD1AE3 /* RuntimeContext.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E471D08589300BD1AE3 /* RuntimeContext.h */; };
-		F5852E581D08589300BD1AE3 /* EosCallResultHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F5852E481D08589300BD1AE3 /* EosCallResultHandler.h */; };
 		F5852E5B1D08589300BD1AE3 /* EosLuaInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */; };
 		F5852E5C1D085D3600BD1AE3 /* libEOSSDK-Mac-Shipping.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 033235EA1CA6285B001E62D6 /* libEOSSDK-Mac-Shipping.dylib */; };
 		F5852E601D08621500BD1AE3 /* plugin_eos.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 800621091B72CFEF00E34F9D /* plugin_eos.dylib */; };
@@ -48,8 +45,6 @@
 		F54A690327EE233700ACF0E5 /* PlatformCommandLine-mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "PlatformCommandLine-mac.mm"; sourceTree = "<group>"; };
 		F54A690427EE233700ACF0E5 /* PlatformCommandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformCommandLine.h; sourceTree = "<group>"; };
 		F54A690727EE263D00ACF0E5 /* PlatformCommandLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlatformCommandLine.cpp; sourceTree = "<group>"; };
-		F5852E3C1D08589300BD1AE3 /* BaseEosCallResultHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseEosCallResultHandler.cpp; path = ../Source/BaseEosCallResultHandler.cpp; sourceTree = "<group>"; };
-		F5852E3D1D08589300BD1AE3 /* BaseEosCallResultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseEosCallResultHandler.h; path = ../Source/BaseEosCallResultHandler.h; sourceTree = "<group>"; };
 		F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DispatchEventTask.cpp; path = ../Source/DispatchEventTask.cpp; sourceTree = "<group>"; };
 		F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DispatchEventTask.h; path = ../Source/DispatchEventTask.h; sourceTree = "<group>"; };
 		F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaEventDispatcher.cpp; path = ../Source/LuaEventDispatcher.cpp; sourceTree = "<group>"; };
@@ -59,7 +54,6 @@
 		F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginConfigLuaSettings.h; path = ../Source/PluginConfigLuaSettings.h; sourceTree = "<group>"; };
 		F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RuntimeContext.cpp; path = ../Source/RuntimeContext.cpp; sourceTree = "<group>"; };
 		F5852E471D08589300BD1AE3 /* RuntimeContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RuntimeContext.h; path = ../Source/RuntimeContext.h; sourceTree = "<group>"; };
-		F5852E481D08589300BD1AE3 /* EosCallResultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EosCallResultHandler.h; path = ../Source/EosCallResultHandler.h; sourceTree = "<group>"; };
 		F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EosLuaInterface.cpp; path = ../Source/EosLuaInterface.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,8 +92,6 @@
 				F54A690327EE233700ACF0E5 /* PlatformCommandLine-mac.mm */,
 				F54A690727EE263D00ACF0E5 /* PlatformCommandLine.cpp */,
 				F54A690427EE233700ACF0E5 /* PlatformCommandLine.h */,
-				F5852E3C1D08589300BD1AE3 /* BaseEosCallResultHandler.cpp */,
-				F5852E3D1D08589300BD1AE3 /* BaseEosCallResultHandler.h */,
 				F5852E3E1D08589300BD1AE3 /* DispatchEventTask.cpp */,
 				F5852E3F1D08589300BD1AE3 /* DispatchEventTask.h */,
 				F5852E401D08589300BD1AE3 /* LuaEventDispatcher.cpp */,
@@ -109,7 +101,6 @@
 				F5852E441D08589300BD1AE3 /* PluginConfigLuaSettings.h */,
 				F5852E461D08589300BD1AE3 /* RuntimeContext.cpp */,
 				F5852E471D08589300BD1AE3 /* RuntimeContext.h */,
-				F5852E481D08589300BD1AE3 /* EosCallResultHandler.h */,
 				F5852E4B1D08589300BD1AE3 /* EosLuaInterface.cpp */,
 			);
 			name = src;
@@ -131,13 +122,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5852E4D1D08589300BD1AE3 /* BaseEosCallResultHandler.h in Headers */,
 				F5852E521D08589300BD1AE3 /* LuaMethodCallback.h in Headers */,
 				F5852E4F1D08589300BD1AE3 /* DispatchEventTask.h in Headers */,
 				F5852E511D08589300BD1AE3 /* LuaEventDispatcher.h in Headers */,
 				F5852E541D08589300BD1AE3 /* PluginConfigLuaSettings.h in Headers */,
 				F5852E571D08589300BD1AE3 /* RuntimeContext.h in Headers */,
-				F5852E581D08589300BD1AE3 /* EosCallResultHandler.h in Headers */,
 				F54A690627EE233700ACF0E5 /* PlatformCommandLine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5852E4E1D08589300BD1AE3 /* DispatchEventTask.cpp in Sources */,
-				F5852E4C1D08589300BD1AE3 /* BaseEosCallResultHandler.cpp in Sources */,
 				F5852E561D08589300BD1AE3 /* RuntimeContext.cpp in Sources */,
 				F54A690527EE233700ACF0E5 /* PlatformCommandLine-mac.mm in Sources */,
 				F54A690827EE263D00ACF0E5 /* PlatformCommandLine.cpp in Sources */,

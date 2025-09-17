@@ -144,7 +144,7 @@ void PluginConfigLuaSettings::SetStringClientSecret(const char* stringId)
 
 const char* PluginConfigLuaSettings::GetStringProductName() const
 {
-    return fStringClientSecret.c_str();
+    return fStringProductName.c_str();
 }
 
 void PluginConfigLuaSettings::SetStringProductName(const char* stringId)
