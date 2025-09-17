@@ -213,7 +213,11 @@ void RuntimeContext::OnHandleGlobalEosEvent(TEosEventCallbackParam* eventDataPoi
  {
  	OnHandleGlobalEosEvent<const EOS_Auth_LoginCallbackInfo*, DispatchLoginResponseEventTask>(&Data);
  }
-
+void RuntimeContext::OnLogoutResponse(const EOS_Auth_LogoutCallbackInfo* Data)
+{
+    OnHandleGlobalEosEvent<EOS_Auth_LogoutCallbackInfo, DispatchLogoutResponseEventTask>(
+        (EOS_Auth_LogoutCallbackInfo*)Data);
+}
 void RuntimeContext::OnLoadProductsResponse(const EOS_Ecom_QueryOffersCallbackInfo* Data)
  {
  	OnHandleGlobalEosEvent<const EOS_Ecom_QueryOffersCallbackInfo*, DispatchLoadProductsEventTask>(&Data);

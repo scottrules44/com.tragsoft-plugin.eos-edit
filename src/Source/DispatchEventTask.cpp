@@ -136,6 +136,57 @@ bool DispatchLoginResponseEventTask::PushLuaEventTableTo(lua_State *luaStatePoin
 }
 
 //---------------------------------------------------------------------------------
+// DispatchLogoutResponseEventTask Class Members
+//---------------------------------------------------------------------------------
+
+const char DispatchLogoutResponseEventTask::kLuaEventName[] = "logoutResponse";
+
+DispatchLogoutResponseEventTask::DispatchLogoutResponseEventTask()
+        : fResult(EOS_EResult::EOS_UnexpectedError) {
+}
+
+DispatchLogoutResponseEventTask::~DispatchLogoutResponseEventTask() {
+}
+
+void DispatchLogoutResponseEventTask::AcquireEventDataFrom(
+        const EOS_Auth_LogoutCallbackInfo& eosEventData) {
+    fResult = eosEventData.ResultCode;
+    if (fResult == EOS_EResult::EOS_Success && eosEventData.LocalUserId) {
+        int sz = EOS_EPICACCOUNTID_MAX_LENGTH + 1;
+        EOS_EpicAccountId_ToString(eosEventData.LocalUserId, fLocalUserId, &sz);
+        fLocalUserId[sz] = 0;
+    } else {
+        fLocalUserId[0] = 0;
+    }
+}
+
+const char* DispatchLogoutResponseEventTask::GetLuaEventName() const {
+    return kLuaEventName;
+}
+
+bool DispatchLogoutResponseEventTask::PushLuaEventTableTo(lua_State* luaStatePointer) const {
+    if (!luaStatePointer) {
+        return false;
+    }
+
+    CoronaLuaNewEvent(luaStatePointer, kLuaEventName);
+
+    if (fResult == EOS_EResult::EOS_Success && fLocalUserId[0] != 0) {
+        lua_pushstring(luaStatePointer, fLocalUserId);
+        lua_setfield(luaStatePointer, -2, "localUserId");
+    }
+
+    lua_pushboolean(luaStatePointer, fResult != EOS_EResult::EOS_Success ? 1 : 0);
+    lua_setfield(luaStatePointer, -2, "isError");
+
+    lua_pushinteger(luaStatePointer, (int)fResult);
+    lua_setfield(luaStatePointer, -2, "resultCode");
+
+    return true;
+}
+
+
+//---------------------------------------------------------------------------------
 // DispatchLoadProductsEventTask Class Members
 //---------------------------------------------------------------------------------
 

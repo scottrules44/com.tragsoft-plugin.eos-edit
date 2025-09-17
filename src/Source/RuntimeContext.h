@@ -163,6 +163,7 @@ class RuntimeContext
 
 		/** Set up global Eos event handlers via their macros. */
 		void OnLoginResponse(const EOS_Auth_LoginCallbackInfo* Data);
+        void OnLogoutResponse(const EOS_Auth_LogoutCallbackInfo* Data);
 		void OnLoadProductsResponse(const EOS_Ecom_QueryOffersCallbackInfo* Data);
 		void OnCheckoutProductResponse(const EOS_Ecom_CheckoutCallbackInfo* Data);
 		void OnQueryEntitlementsResponse(const EOS_Ecom_QueryEntitlementsCallbackInfo* Data);

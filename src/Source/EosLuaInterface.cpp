@@ -162,7 +162,27 @@ void EOS_CALL onLoginCallback(const EOS_Auth_LoginCallbackInfo *Data) {
         contextPointer->OnLoginResponse(Data);
     }
 }
+void EOS_CALL onLogoutCallback(const EOS_Auth_LogoutCallbackInfo* Data)
+{
+    RuntimeContext* contextPointer = (RuntimeContext*)Data->ClientData;
+    if (!contextPointer)
+    {
+        return;
+    }
 
+    if (Data->ResultCode == EOS_EResult::EOS_Success)
+    {
+        // Clear the stored EpicAccountId since the user is now logged out
+        contextPointer->fAccountId = nullptr;
+    }
+
+    if (EOS_EResult_IsOperationComplete(Data->ResultCode))
+    {
+        // You’ll want to mirror your login handler here
+        // Add a method to RuntimeContext to process logout
+        contextPointer->OnLogoutResponse(Data);
+    }
+}
 //---------------------------------------------------------------------------------
 // Lua API Handlers
 //---------------------------------------------------------------------------------
@@ -375,6 +395,29 @@ extern "C" int OnLoginWithAccountPortal(lua_State *luaStatePointer) {
     return 1;
 }
 
+extern "C" int OnLogOut(lua_State *luaStatePointer) {
+    // Fetch this plugin's runtime context associated with the calling Lua state.
+    auto contextPointer = GetRuntimeContextFromLuaState(luaStatePointer);
+    if (!contextPointer) {
+        return 0;
+    }
+
+    EOS_Auth_LogoutOptions LogoutOptions = {};
+    LogoutOptions.ApiVersion = EOS_AUTH_LOGOUT_API_LATEST;
+    LogoutOptions.LocalUserId = contextPointer->fAccountId; // must be set from login result
+
+    EOS_Auth_Logout(contextPointer->fAuthHandle, &LogoutOptions, contextPointer, onLogoutCallback);
+    EOS_Auth_DeletePersistentAuthOptions deleteOptions = {};
+    deleteOptions.ApiVersion = EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST;
+
+    EOS_Auth_DeletePersistentAuth(contextPointer->fAuthHandle, &deleteOptions, nullptr,
+        [](const EOS_Auth_DeletePersistentAuthCallbackInfo* Data) {
+           
+        }
+    );
+    return 1;
+}
+
 /** UserInfo eos.getAuthIdToken() */
 extern "C" int OnGetAuthIdToken(lua_State *luaStatePointer) {
     // Validate.
@@ -546,7 +589,8 @@ extern "C" int OnLoadProducts(lua_State *luaStatePointer) {
 //        lua_pushboolean(luaStatePointer, 0);
 //        return 1;
 //    }
-
+    PluginConfigLuaSettings configLuaSettings;
+    configLuaSettings.LoadFrom(luaStatePointer);
     // Fetch the runtime context associated with the calling Lua state.
     auto contextPointer = GetRuntimeContextFromLuaState(luaStatePointer);
     if (!contextPointer) {
@@ -568,7 +612,7 @@ extern "C" int OnLoadProducts(lua_State *luaStatePointer) {
     EOS_Ecom_QueryOffersOptions QueryOptions{0};
     QueryOptions.ApiVersion = EOS_ECOM_QUERYOFFERS_API_LATEST;
     QueryOptions.LocalUserId = eosAccountId;
-    QueryOptions.OverrideCatalogNamespace = nullptr;
+    QueryOptions.OverrideCatalogNamespace = configLuaSettings.GetStringSandboxId();
 
     EOS_Ecom_QueryOffers(EcomHandle, &QueryOptions, contextPointer, QueryStoreCompleteCallbackFn);
 
@@ -867,6 +911,7 @@ CORONA_EXPORT int luaopen_plugin_eos(lua_State *luaStatePointer) {
                         {"isLoggedOn",              OnIsLoggedOn},
                         {"getAuthIdToken",          OnGetAuthIdToken},
                         {"loginWithAccountPortal",  OnLoginWithAccountPortal},
+                        {"logout",                  OnLogOut},
                         {"setNotificationPosition", OnSetNotificationPosition},
 
                         {"init",                    OnFakeIAPInit},

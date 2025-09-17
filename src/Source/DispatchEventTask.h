@@ -86,6 +86,24 @@ private:
 	char fSelectedAccountID[EOS_EPICACCOUNTID_MAX_LENGTH + 1];
 };
 
+/** Dispatches an Epic "EOS_Auth_LogoutCallbackInfo" event and its data to Lua. */
+class DispatchLogoutResponseEventTask : public BaseDispatchEventTask
+{
+public:
+    static const char kLuaEventName[];
+
+    DispatchLogoutResponseEventTask();
+    virtual ~DispatchLogoutResponseEventTask();
+
+    void AcquireEventDataFrom(const EOS_Auth_LogoutCallbackInfo& Data);
+    virtual const char* GetLuaEventName() const;
+    virtual bool PushLuaEventTableTo(lua_State* luaStatePointer) const;
+
+private:
+    EOS_EResult fResult;
+    char fLocalUserId[EOS_EPICACCOUNTID_MAX_LENGTH + 1];
+};
+
 /** Dispatches an Epic "EOS_Ecom_QueryOffersCallbackInfo" event and its data to Lua. */
 class DispatchLoadProductsEventTask : public BaseDispatchCallResultEventTask
 {
