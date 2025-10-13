@@ -38,6 +38,9 @@ local function onLoginSuccess(authIdToken)
                     print(k, v)
                 end
             end
+            timer.performWithDelay(1000, function()
+                eos.purchase("08606ab019b8411487a44da041b6115b")
+            end)
         end)
 
         eos.restore()

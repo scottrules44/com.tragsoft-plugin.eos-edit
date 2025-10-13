@@ -11,18 +11,3 @@
 #import <Foundation/Foundation.h>
 
 
-const std::__ndk1::vector <std::string> & CMDLine::Get() {
-	static std::vector<std::string> ret;
-    static bool toInit = true;
-
-	if(toInit) {
-		toInit = false;
-		NSArray<NSString *> *args = [[NSProcessInfo processInfo] arguments];
-		ret.reserve([args count]);
-		for(NSString *arg in args) {
-			ret.push_back([arg UTF8String]);
-		}
-	}
-	return ret;
-}
-

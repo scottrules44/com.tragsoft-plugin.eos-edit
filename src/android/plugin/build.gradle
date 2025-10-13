@@ -59,6 +59,9 @@ android {
             jniLibs.srcDirs = ["jniLibs"]
         }
     }
+    packagingOptions {
+        exclude "lib/arm64-v8a/libcorona.so"
+    }
 }
 
 repositories {
@@ -69,10 +72,10 @@ repositories {
 dependencies {
     implementation ':Corona@aar'
 
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.security:security-crypto:1.0.0'
-    implementation 'androidx.browser:browser:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.security:security-crypto:1.1.0'
+    implementation "androidx.browser:browser:1.8.0"
 
     implementation(name: "eos-sdk", ext: "aar")
 }
