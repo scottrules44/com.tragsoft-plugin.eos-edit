@@ -51,6 +51,7 @@ extern "C" int OnAddEventListener(lua_State* luaStatePointer);
 extern "C" int OnRemoveEventListener(lua_State* luaStatePointer);
 extern "C" int OnLoginWithAccountPortal(lua_State* luaStatePointer);
 extern "C" int OnGetAuthIdToken(lua_State* luaStatePointer);
+extern "C" int OnLogout(lua_State* luaStatePointer);
 
 extern "C" int OnLoadProducts(lua_State* luaStatePointer);
 extern "C" int OnPurchaseProduct(lua_State* luaStatePointer);

@@ -233,7 +233,7 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
                 new AddEventListenerWrapper(),
                 new RemoveEventListenerWrapper(),
                 new GetAuthIdTokenWrapper(),
-
+                new LogoutWrapper(),
                 new RestoreWrapper(),
                 new PurchaseWrapper(),
                 new LoadProductsWrapper(),
@@ -518,6 +518,22 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
     }
 
     /**
+     * Implements the eos.logout() Lua function.
+     */
+    @SuppressWarnings("unused")
+    private class LogoutWrapper implements NamedJavaFunction {
+        @Override
+        public String getName() {
+            return "logout";
+        }
+
+        @Override
+        public int invoke(LuaState L) {
+            nativeLogout(L);
+            return 0;
+        }
+    }
+    /**
      * Implements the eos.purchase() Lua function.
      */
     @SuppressWarnings("unused")
@@ -621,7 +637,10 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
 
     public native int nativeGetAuthIdToken(LuaState luaStatePointer);
 
+    public native boolean nativeLogout(LuaState luaStatePointer);
+
     public native String GetUsername();
 
     public native void PassLuaLoaderInstance();
+
 }

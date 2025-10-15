@@ -143,3 +143,14 @@ tasks.register("deployToLocalSolar2DRepo", Tar) {
         println("\n\n\n== !!! IMPORTANT !!! ==\nMake sure to delete plugin when done: $dst\nThis plugin will override any Solar2Directory plugin, or plugin from any other source")
     }
 }
+
+// Ensure native builds have access to the unpacked Corona and EOS SDK binaries.
+tasks.matching { it.name == "preBuild" }.configureEach {
+    dependsOn("unzipCoronaAar", "unzipEosAar")
+}
+
+tasks.configureEach { task ->
+    if (task.name.startsWith("configureCMake") || task.name.startsWith("externalNativeBuild")) {
+        task.dependsOn("unzipCoronaAar", "unzipEosAar")
+    }
+}

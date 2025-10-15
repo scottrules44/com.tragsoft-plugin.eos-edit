@@ -395,7 +395,7 @@ extern "C" int OnLoginWithAccountPortal(lua_State *luaStatePointer) {
     return 1;
 }
 
-extern "C" int OnLogOut(lua_State *luaStatePointer) {
+extern "C" int OnLogout(lua_State *luaStatePointer) {
     // Fetch this plugin's runtime context associated with the calling Lua state.
     auto contextPointer = GetRuntimeContextFromLuaState(luaStatePointer);
     if (!contextPointer) {
@@ -911,7 +911,7 @@ CORONA_EXPORT int luaopen_plugin_eos(lua_State *luaStatePointer) {
                         {"isLoggedOn",              OnIsLoggedOn},
                         {"getAuthIdToken",          OnGetAuthIdToken},
                         {"loginWithAccountPortal",  OnLoginWithAccountPortal},
-                        {"logout",                  OnLogOut},
+                        {"logout",                  OnLogout},
                         {"setNotificationPosition", OnSetNotificationPosition},
 
                         {"init",                    OnFakeIAPInit},

@@ -283,6 +283,15 @@ Java_plugin_eos_LuaLoader_nativeRemoveEventListener(
     return OnRemoveEventListener(L);
 }
 
+extern "C" JNIEXPORT jboolean JNICALL
+Java_plugin_eos_LuaLoader_nativeLogout(
+        JNIEnv *env,
+        jobject /* this */,
+        jobject luaStateObj) {
+    lua_State* L = GetLuaStatePointer(env, luaStateObj);
+    return OnLogout(L);
+}
+
 void AuthLogin(const EOS_Auth_LoginOptions &options, const EOS_Auth_OnLoginCallback delegate) {
     EOS_HAuth handle = EOS_Platform_GetAuthInterface(PlatformHandle);
     LoginInProgress();
@@ -408,6 +417,7 @@ Java_plugin_eos_LuaLoader_nativeGetAuthIdToken(JNIEnv *env, jobject thiz, jobjec
     lua_State* L = GetLuaStatePointer(env, luaStateObj);
     return OnGetAuthIdToken(L);
 }
+
 
 /** Attempt a login to the EOS Auth Interface using the web account portal */
 extern "C" JNIEXPORT void JNICALL
